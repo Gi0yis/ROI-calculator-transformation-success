@@ -23,7 +23,7 @@ El servidor recibe un JSON con los siguientes campos:
 """
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/data": {"origins": "*"}})
 
 @app.route("/data", methods=["POST"])
 def data():
@@ -56,4 +56,4 @@ def data():
         return jsonify({"error": "An unexpected error occurred"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
