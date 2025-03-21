@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from services.gpt import get_recommendations
 from services.utils import validate_json
 from services.metrics import calculate_metrics
@@ -22,6 +23,7 @@ El servidor recibe un JSON con los siguientes campos:
 """
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/data", methods=["POST"])
 def data():
